@@ -1,5 +1,6 @@
 package DataStructure;
 
+import java.util.EmptyStackException;
 import java.util.Stack;
 
 class FullStackException extends Exception {
@@ -55,14 +56,12 @@ class MultiStacks {
         }
     }
 
-
     public MultiStacks(int numOfStack, int defaultSize) {
         info = new StackInfo[numOfStack];
         for (int i = 0; i < numOfStack; i++) {
             info[i] = new StackInfo(defaultSize * i, defaultSize);
         }
         values = new int[numOfStack * defaultSize];
-
     }
 
     private void expand(int stackNum) {
@@ -77,13 +76,16 @@ class MultiStacks {
             int nextStack = (stackNum + 1) & info.length;
             shift(nextStack);
             stack.stackSize++;
+//            expand(stackNum);
         }
         int index = stack.getLastStackIndex();
         while (stack.isWithinIndex(index)) {
             values[index] = values[previousIndex(index)];
             index = previousIndex(index);
+
         }
-        values[stack.start] = nextIndex(stack.start);
+        values[stack.start] = 0;
+        stack.start = nextIndex(stack.start);
         stack.stackSize--;
     }
 
@@ -97,7 +99,7 @@ class MultiStacks {
     }
 
     private int previousIndex(int index) {
-        return adjustIndex(index);
+        return adjustIndex(index - 1);
     }
 
     public int numberOfElements() {
@@ -112,10 +114,80 @@ class MultiStacks {
         return numberOfElements() == values.length;
     }
 
+    public void push(int stackNum, int value) throws FullStackException {
+        if (allStackAreFull()) throw new FullStackException();
+        StackInfo stackInfo = info[stackNum];
+        if (stackInfo.isFull()) expand(stackNum);
+        values[stackInfo.getNewDataIndex()] = value;
+        stackInfo.dataSize++;
+    }
+
+    public int pop(int stackNum) throws EmptyStackException {
+        StackInfo stackInfo = info[stackNum];
+        if (stackInfo.isEmpty()) throw new EmptyStackException();
+        int result = values[stackInfo.getLastDataIndex()];
+        values[stackInfo.getLastDataIndex()] = 0;
+        stackInfo.dataSize--;
+        return result;
+    }
+
+    public int peek(int stackNum) throws EmptyStackException {
+        StackInfo stackInfo = info[stackNum];
+        if (stackInfo.isEmpty()) throw new EmptyStackException();
+        return values[stackInfo.getLastDataIndex()];
+    }
+
 }
 
 public class ArrayMultiStack {
     public static void main(String[] args) {
+//        System.out.println("hello");
+        MultiStacks ms = new MultiStacks(3, 5);
+//        System.out.println("It's Full");
+
+        try {
+            ms.push(0, 1);
+            ms.push(0, 2);
+            ms.push(0, 3);
+            ms.push(0, 4);
+            ms.push(0, 5);
+            ms.push(0, 6);
+            ms.push(0, 7);
+            ms.push(0, 8);
+            ms.push(0, 9);
+
+
+            ms.push(1, 11);
+            ms.push(1, 12);
+            ms.push(1, 13);
+            ms.push(1, 14);
+            ms.push(1, 15);
+        } catch (FullStackException e) {
+            // TODO Auto-generated catch block
+            System.out.println("It's Full");
+        }
+
+
+        try {
+            System.out.println(ms.pop(0));
+            System.out.println(ms.pop(0));
+            System.out.println(ms.pop(0));
+            System.out.println(ms.pop(0));
+            System.out.println(ms.pop(0));
+            System.out.println(ms.pop(0));
+            System.out.println(ms.pop(0));
+            System.out.println(ms.pop(0));
+            System.out.println(ms.pop(0));
+
+            System.out.println(ms.pop(1));
+            System.out.println(ms.pop(1));
+            System.out.println(ms.pop(1));
+            System.out.println(ms.pop(1));
+            System.out.println(ms.pop(1));
+
+        } catch (EmptyStackException e) {
+            System.out.println("It's Empty");
+        }
 
     }
 }
