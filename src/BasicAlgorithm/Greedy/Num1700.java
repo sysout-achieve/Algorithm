@@ -4,61 +4,59 @@ package BasicAlgorithm.Greedy;
 test
 3 14
 1 4 3 2 5 4 3 2 5 3 4 2 3 4
-*/
 
-import java.util.ArrayList;
+1 4 3
+2 4 3
+5 4 3
+5 2 3
+4 2 3
+
+1 4 3
+1 2 3
+1 2 5
+1 4 5
+*/
 import java.util.Scanner;
 
 public class Num1700 {
-//    private static int used = 0;
-//    private static int result = 0;
-//    private static int[] tabs;
-//    private static int[] toolUsing;
-//    private static ArrayList<Integer> tools = new ArrayList<>();
-//
-//    public static void main(String[] args) {
-//        Scanner scanner = new Scanner(System.in);
-//        int tabCnt = scanner.nextInt();
-//        int toolCnt = scanner.nextInt();
-//        tabs = new int[tabCnt];
-//        toolUsing = new int[toolCnt + 1];
-//        for (int i = 1; i <= toolCnt; i++) {
-//            int toolNum = scanner.nextInt();
-//            tools.add(toolNum);
-//            toolUsing[i]++;
-//        }
-//
-//        for (int i = 0; i < tools.size(); i++) {
-//            if (tabCnt > used) {
-//                addPlug(i);
-//            } else {
-//                for (int j = 0; j < tabCnt; j++) {
-//                    if (toolUsing[tabs[j]] == 0) {
-////                        int toolNum = tools.get(i);
-//                        tabs[j] = 0;
-//                        used--;
-//                        result++;
-//                    }
-//                }
-//            }
-//        }
-//    }
-//
-//    private static void addPlug(int index) {
-//        int toolNum = tools.get(index);
-//        tabs[used] = toolNum;
-//        toolUsing[toolNum]--;
-//        used++;
-//    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int plugCnt = sc.nextInt();
+        int toolCnt = sc.nextInt();
 
+        int[] toolList = new int[toolCnt];
+        int[] plugs = new int[plugCnt];
+        for (int i = 0; i < toolCnt; i++) {
+            toolList[i] = sc.nextInt();
+        }
+        int ans = 0;
+        for (int i = 0; i < toolCnt; i++) {
+            for (int j = 0; j < plugCnt; j++) {
+                if (plugs[j] == 0) {
+                    plugs[j] = toolList[i];
+                    break;
+                } else {
+                    if (plugs[j] == toolList[i]) {
+                        break;
+                    }
+                    if (j != plugCnt - 1) continue;
 
-}
-
-class Tool {
-    int toolNum;
-    int times;
-
-    public Tool(int toolNum) {
-        this.toolNum = toolNum;
+                    int chage = 0, val = -1;
+                    for (int k = 0; k < plugCnt; k++) {
+                        int term = 0;
+                        for (int l = i + 1; l < toolCnt && toolList[l] != plugs[k]; l++) {
+                            term++;
+                        }
+                        if (term > val) {
+                            val = term;
+                            chage = k;
+                        }
+                    }
+                    plugs[chage] = toolList[i];
+                    ans++;
+                }
+            }
+        }
+        System.out.println(ans);
     }
 }
