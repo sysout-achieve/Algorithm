@@ -19,6 +19,7 @@ public class Num1493 {
             int count = sc.nextInt();
             cubeTypes.add(new Cube(size, count));
         }
+
         cubeTypes.sort(Cube::compareTo);
         for (int i = 0; i < cubeType; i++) {
             result = result + box.enterCube(cubeTypes.get(i));
