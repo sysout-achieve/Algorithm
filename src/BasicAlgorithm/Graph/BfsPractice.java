@@ -25,7 +25,6 @@ public class BfsPractice {
                 if (input == 1) {
                     visited[i][j] = true;
                     q.offer(new int[]{i, j});
-//                } else {
                 }
             }
         }
