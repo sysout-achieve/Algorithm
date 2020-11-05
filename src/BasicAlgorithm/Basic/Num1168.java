@@ -1,13 +1,17 @@
 package BasicAlgorithm.Basic;
 
-import java.util.Scanner;
+import java.io.*;
+import java.util.StringTokenizer;
 import java.util.Vector;
 
 public class Num1168 {
-    public static void main(String[] args) {
-        Scanner scan2 = new Scanner(System.in);
-        int N = scan2.nextInt();
-        int K = scan2.nextInt();
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        StringTokenizer st = new StringTokenizer(br.readLine());
+
+        int N = Integer.parseInt(st.nextToken());
+        int K = Integer.parseInt(st.nextToken());
         StringBuilder SB = new StringBuilder();
         Vector<Integer> v = new Vector<>();
 
@@ -22,6 +26,7 @@ public class Num1168 {
             now += K - 1;
             now %= v.size();
         }
-        System.out.println("<" + SB + ">");
+        bw.write("<" + SB + ">");
+        bw.flush();
     }
 }
