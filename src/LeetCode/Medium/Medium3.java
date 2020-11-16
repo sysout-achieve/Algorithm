@@ -2,7 +2,7 @@ package LeetCode.Medium;
 
 public class Medium3 {
     public static void main(String[] args) {
-       System.out.print(solution(new int[]{1, 2, 3, 4}));
+        System.out.print(solution(new int[]{1, 2, 3, 4}));
     }
 
     public static int solution(int[] nums) {
