@@ -31,33 +31,33 @@ public class Num1208 {
         Collections.sort(rightList);
         int leftIdx = 0;
         int rightIdx = rightList.size() - 1;
-        while(leftIdx < leftList.size() && rightIdx >= 0) {
+        while (leftIdx < leftList.size() && rightIdx >= 0) {
 
             int lv = leftList.get(leftIdx);
             int rv = rightList.get(rightIdx);
 
-            if(lv+rv == target) {
+            if (lv + rv == target) {
                 int lc = 0;
-                while(leftIdx<leftList.size() && leftList.get(leftIdx) == lv) {
+                while (leftIdx < leftList.size() && leftList.get(leftIdx) == lv) {
                     lc++;
                     leftIdx++;
                 }
 
                 int rc = 0;
-                while(rightIdx>=0 && rightList.get(rightIdx) == rv) {
+                while (rightIdx >= 0 && rightList.get(rightIdx) == rv) {
                     rc++;
                     rightIdx--;
                 }
 
-                result+=lc*rc;
+                result += lc * rc;
             }
 
-            if(lv+rv > target) rightIdx--;
-            if(lv+rv < target) leftIdx++;
+            if (lv + rv > target) rightIdx--;
+            if (lv + rv < target) leftIdx++;
 
         }
 
-        if(target == 0) result--; // 합계가 0인걸 찾는경우 맨 초기값이 0이므로 이 경우를 한번 빼주어야 함
+        if (target == 0) result--; // 합계가 0인걸 찾는경우 맨 초기값이 0이므로 이 경우를 한번 빼주어야 함
 
         bw.write(result + "");
         bw.flush();
