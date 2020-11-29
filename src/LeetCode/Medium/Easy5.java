@@ -27,7 +27,7 @@ public class Easy5 {
             }
             result = find();
             if (result == 0) break;
-            if (spelling[maxIndex] >0) spelling[maxIndex]--;
+            if (spelling[maxIndex] > 0) spelling[maxIndex]--;
             n--;
             result = find();
         }

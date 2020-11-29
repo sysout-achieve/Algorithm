@@ -19,7 +19,7 @@ public class Easy4 {
                 }
             }
         }
-        return 0;
+        return result;
     }
 
     static int possible(int c, boolean[] isBroken) {
