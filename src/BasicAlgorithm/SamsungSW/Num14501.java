@@ -21,9 +21,9 @@ public class Num14501 {
         }
         for (int i = cnt; i >= 0; i--) {
             if (i + time[i] - 1 <= cnt) {
-                dp[i] = Math.max(point[i]+dp[i+time[i]], dp[i+1]);
+                dp[i] = Math.max(point[i] + dp[i + time[i]], dp[i + 1]);
             } else {
-                dp[i] = dp[i+1];
+                dp[i] = dp[i + 1];
             }
         }
 

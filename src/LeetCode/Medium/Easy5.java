@@ -10,7 +10,6 @@ public class Easy5 {
 
     public static void main(String[] args) {
         System.out.print(solution("aaaabbc", 3));
-
     }
 
     public static int solution(String s, int n) {
