@@ -1,6 +1,8 @@
 package BasicAlgorithm.Basic;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.StringTokenizer;
 import java.util.Vector;
 
@@ -13,18 +15,20 @@ public class Num1168 {
         int N = Integer.parseInt(st.nextToken());
         int K = Integer.parseInt(st.nextToken());
         StringBuilder SB = new StringBuilder();
-        Vector<Integer> v = new Vector<>();
+        ArrayList<Integer> v = new ArrayList<>();
 
         for (int i = 1; i <= N; i++) v.add(i);
 
         int now = K - 1;
+        int size = v.size();
         while (true) {
             SB.append(v.get(now));
             v.remove(now);
-            if (v.size() == 0) break;
+            size--;
+            if (size == 0) break;
             SB.append(", ");
             now += K - 1;
-            now %= v.size();
+            now %= size;
         }
         bw.write("<" + SB + ">");
         bw.flush();

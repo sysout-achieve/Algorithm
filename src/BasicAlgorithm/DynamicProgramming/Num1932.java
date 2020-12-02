@@ -17,6 +17,7 @@ public class Num1932 {
                 map[i][j] = Integer.parseInt(st.nextToken());
             }
         }
+
         dp[0][1] = map[0][1];
         for (int i = 1; i <= cnt; i++) {
             for (int j = 1; j <= i + 1; j++) {

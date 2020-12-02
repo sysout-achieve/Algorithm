@@ -32,7 +32,7 @@ public class Num1167 {
             }
         }
         dfs(1, treeNode, visited, 0);
-        visited = new boolean[V+1];
+        visited = new boolean[V + 1];
         dfs(start, treeNode, visited, 0);
         System.out.print(result);
     }
@@ -43,7 +43,7 @@ public class Num1167 {
         for (int j : arr[i]) {
             if (!visited[j]) {
                 length += tree[i].nextCost.get(j);
-                if (result <= length){
+                if (result <= length) {
                     result = length;
                     start = j;
                 }
