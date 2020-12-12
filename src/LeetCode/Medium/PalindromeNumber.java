@@ -24,6 +24,7 @@ public class PalindromeNumber {
             considerValue /= 10;
             left--;
             right++;
+
         }
         return true;
 
