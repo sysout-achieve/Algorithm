@@ -28,6 +28,7 @@ public class Heap3 {
                 }
             }
         }
+
         if (!maxQueue.isEmpty()){
             answer[0] = maxQueue.poll();
             answer[1] = minQueue.poll();
