@@ -26,7 +26,6 @@ public class Num14501 {
                 dp[i] = dp[i + 1];
             }
         }
-
         bw.write(dp[0] + "");
         bw.flush();
     }
