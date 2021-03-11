@@ -7,11 +7,11 @@ public class MaximumSubArray {
     }
 
     public static int solve(int[] input) {
-        int sumMax = input[0];
+        int continuesMaximum = input[0];
         int result = input[0];
         for (int i = 1; i < input.length; i++) {
-            sumMax = Math.max(input[i], sumMax + input[i]);
-            result = Math.max(sumMax, result);
+            continuesMaximum = Math.max(input[i], continuesMaximum + input[i]);
+            result = Math.max(continuesMaximum, result);
         }
         return result;
     }
