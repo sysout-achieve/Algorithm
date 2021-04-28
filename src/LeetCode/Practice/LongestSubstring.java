@@ -22,22 +22,14 @@ public class LongestSubstring {
         int count = 0;
         for (char c : input) {
             end++;
-            if (map.get(c) == null){
-                map.put(c, 1);
-                count++;
-            } else {
-                map.replace(c, map.get(c)+1);
-            }
-            while (count > 2){
-                if (map.get(input[start]) == 1){
-                    map.remove(input[start]);
-                    count--;
-                } else {
-                    map.replace(input[start], map.get(input[start])-1);
-                }
+            if (map.getOrDefault(c, 0) == 0) count++;
+            map.put(c, map.getOrDefault(c, 0) + 1);
+            while (count > 2) {
+                if (map.get(input[start]) == 1) count--;
+                map.put(input[start], map.get(input[start]) - 1);
                 start++;
             }
-            result = Math.max(end-start, result);
+            result = Math.max(end - start, result);
         }
         return result;
     }

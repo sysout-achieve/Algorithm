@@ -6,7 +6,6 @@ public class LIS {
         System.out.println(solve(input));
     }
 
-
     //대안 input 순회
     // 직전 index까지 다시 순회
     // input[현재] > input[index] (dp[index]+1)의 최대값을 input[현재] 에 담습니다.

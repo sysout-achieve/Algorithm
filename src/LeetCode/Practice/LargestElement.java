@@ -22,7 +22,7 @@ public class LargestElement {
         PriorityQueue<Integer> pq = new PriorityQueue<>((a, b) -> a - b);
         for (int i : input) {
             pq.offer(i);
-            if(pq.size() > k){
+            if(pq.size() > k) {
                 pq.poll();
             }
         }
