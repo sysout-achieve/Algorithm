@@ -13,6 +13,7 @@ public class MeetingRoom {
         System.out.print(solve(input)+"");
     }
     static boolean solve(ArrayList<Meeting> input){
+
         input.sort(Comparator.comparingInt(a -> a.start));
         int endTime = input.get(0).end;
         for (int i = 1; i < input.size(); i++) {
