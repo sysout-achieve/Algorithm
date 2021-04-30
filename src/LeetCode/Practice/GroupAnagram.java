@@ -12,24 +12,22 @@ public class GroupAnagram {
     }
 
     private static ArrayList<ArrayList<String>> solve(String[] input) {
-        ArrayList<ArrayList<String>> result = new ArrayList<>();
 
         HashMap<String, ArrayList<String>> map = new HashMap<>();
 
-        for (int i = 0; i < input.length; i++) {
-            char[] temp = input[i].toCharArray();
+        for (String s : input) {
+            char[] temp = s.toCharArray();
             Arrays.sort(temp);
             String valueStr = Arrays.toString(temp);
-            if (map.get(valueStr) != null){
-                map.get(valueStr).add(input[i]);
+            if (map.get(valueStr) != null) {
+                map.get(valueStr).add(s);
             } else {
                 ArrayList<String> list = new ArrayList<>();
-               list.add(input[i]);
-               map.put(valueStr, list);
+                list.add(s);
+                map.put(valueStr, list);
             }
         }
-        result.addAll(map.values());
-        return result;
+        return new ArrayList<>(map.values());
     }
 
 
