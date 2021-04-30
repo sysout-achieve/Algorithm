@@ -10,11 +10,6 @@ public class MoveZeros2 {
         System.out.print(Arrays.toString(solve(input)) +"");
     }
 
-    // 정수배열 숫자넣기
-    // 결과값을 담을 result = int[]
-    // result의 index를 저장할 변수 필요
-    // input 순회하며 value 가 0이 아닐 경우만 result에 값 넣기 + (index++)
-    // 시간복잡도는 O(n)
     static int[] solve(int[] input){
         PriorityQueue<Integer> q = new PriorityQueue<>();
         int index = 0;
