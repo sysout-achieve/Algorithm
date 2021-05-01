@@ -9,23 +9,25 @@ public class ValidParentheses {
 //        String str= "()[]{}"  ;//true;
 //        String str= "(}"  ;//false;
         String str = "([}}])";
-        System.out.print(solve(str)+"");
+        System.out.print(solve(str) + "");
     }
-    static boolean solve(String input){
+
+    static boolean solve(String input) {
         char[] arr = input.toCharArray();
         Map<Character, Character> map = new HashMap<>();
-        map.put(']','[');
-        map.put('}','{');
-        map.put(')','(');
+        map.put(']', '[');
+        map.put('}', '{');
+        map.put(')', '(');
         Stack<Character> stack = new Stack<>();
-        for (char c : arr){
-            switch (c){
+        for (char c : arr) {
+            switch (c) {
                 case ']':
                 case '}':
                 case ')':
                     if (map.get(c) == stack.pop()) continue;
                     else return false;
-                default: stack.push(c);
+                default:
+                    stack.push(c);
             }
         }
         return stack.isEmpty();
