@@ -8,7 +8,7 @@ public class StringCompress {
     }
     //대안
     // charArr 순회
-    // char current, int cnt =1
+    // char current, int cnt = 1
     // stringBuilder sb
     // current와 index의 char 같으면 cnt++
     //                      다르면 cnt를 sb.append
